@@ -2,7 +2,7 @@
 
 Object Hallucination Benchmark for Vision Language Models (VLMs)
 
-from the [paper]()
+from the [paper](https://arxiv.org/abs/2503.23573)
 
 **DASH: Detection and Assessment of Systematic Hallucinations of VLMs**
 
