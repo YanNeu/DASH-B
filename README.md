@@ -100,8 +100,8 @@ Available VLMs:
 ## Citation
 
     @article{augustin2025dash,
-      title={DASH: Detection and Assessment of Systematic Hallucinations of VLMs},
-      author={Augustin, Maximilian and Neuhaus, Yannic and Hein, Matthias},
-      journal={arXiv preprint arXiv:2503.23573},
-      year={2025}
+        title={DASH: Detection and Assessment of Systematic Hallucinations of VLMs},
+        author={Augustin, Maximilian and Neuhaus, Yannic and Hein, Matthias},
+        journal={arXiv preprint arXiv:2503.23573},
+        year={2025}
     }
