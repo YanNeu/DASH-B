@@ -21,7 +21,11 @@ The benchmark consists of 2682 images for a range of 70 different objects. The u
 <a id="download"></a>
 ### Download images
 
-Download and unzip in `images`:
+You can either use Hugging Face Datasets:
+
+    dataset = load_dataset("YanNeu/DASH-B")
+
+Or download and unzip in `images`:
 
     cd images
     wget https://nc.mlcloud.uni-tuebingen.de/index.php/s/HJKbBWpgLFz4rN5/download/neg.zip
@@ -34,7 +38,11 @@ Download and unzip in `images`:
 <a id="eval"></a>
 ## Evaluating VLMs on DASH-B
 
-### Custom VLM
+### (a) Using Hugging Face Datasets
+
+We provide a template script in `src/evaluate_hf.py`.
+
+### (b) Without Hugging Face Datasets (requires downloading the images manually)
 You can easily evaluate a custom VLM by implementing the two functions
 
     def load_vlm(self, *args, **kwargs):
@@ -66,7 +74,7 @@ in `src/evaluate.py` and running
 See `src/vlms` for several implementations used in the paper.
 
 
-### Reproduce DASH results
+### (c) Reproduce DASH results
 
 Install the requirements as explained in the [DASH](https://github.com/YanNeu/DASH) repository.
 

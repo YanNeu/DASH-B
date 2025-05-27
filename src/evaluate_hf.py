@@ -15,26 +15,26 @@ if __name__ == "__main__":
     dataset = load_dataset("YanNeu/DASH-B")
     
     # Load the VLM
-    
-    vlm_name_print = # the model name used for saving results
+    vlm_name_print = # model name, e.g. "PaliGemma-3b" used for saving results
     ### LOAD YOUR MODEL HERE ###
     
     # Evaluate the dataset
     responses = {}
     for data_dict in tqdm(dataset['test']):
-        images = [data_dict['image']]
         q_id = data_dict['question_id']
+        
         prompt = data_dict['question']
         query = f'<image>\n{prompt}'
 
+        images = [data_dict['image']]
+
         ### EVALUATE YOUR MODEL HERE ###
         
-        response = None
+        response = # Decoded model response
         responses[q_id] = response
 
     # Save answers and compute results for DASH-B
-    save_responses(responses, output_dir, vlm_name)
-    results = compute_results_hf(output_dir, vlm_name, dataset['test'], responses)
+    results = compute_results_hf(output_dir, vlm_name_print, dataset['test'], responses)
     
-    print(vlm_name)
+    print(vlm_name_print)
     print(results)
