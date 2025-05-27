@@ -53,3 +53,54 @@ def compute_results(output_dir, vlm_evaluator, benchmark_data, responses):
     with open(results_json, 'w') as f:
         f.write(json.dumps(results, indent=4))
     return results
+
+
+def compute_results_hf(output_dir, vlm_name, benchmark_data, responses):
+
+    answers = []
+    for data_dict in benchmark_data:
+        answers.append({
+            'img_id': data_dict['img_id'],
+            'question_id': data_dict['question_id'],
+            'object_name': data_dict['object'],
+            'gt': data_dict['answer'],
+            'response': responses[data_dict['question_id']],
+            'answer': compute_answer(responses[data_dict['question_id']])
+        })
+
+    answers_json = os.path.join(output_dir, f'{vlm_name.replace('/', '_')}_answers.json')
+    with open(answers_json, 'w') as f:
+        f.write(json.dumps(answers, indent=4))
+
+    n_correct = 0
+    n_correct_neg = 0
+    n_correct_pos = 0
+    n_total = 0
+    n_total_neg = 0
+    n_total_pos = 0
+    for answer_dict in answers:
+        if answer_dict['answer'] == answer_dict['gt']:
+            n_correct += 1
+            n_correct_pos += int(answer_dict['gt'] == 'yes')
+            n_correct_neg += int(answer_dict['gt'] == 'no')
+        n_total += 1 
+        n_total_pos += int(answer_dict['gt'] == 'yes')
+        n_total_neg += int(answer_dict['gt'] == 'no')
+    
+    results = {
+        'ACC': n_correct / n_total,
+        'TNR': n_correct_neg / n_total_neg,
+        'TPR': n_correct_pos / n_total_pos,
+    }
+    results['Harmonic Mean'] = 2 * (results['TPR'] * results['TNR']) / (results['TPR'] + results['TNR'])
+    
+    results_json = os.path.join(output_dir, f'{vlm_name.replace('/', '_')}_dash_b_results.json')
+    with open(results_json, 'w') as f:
+        f.write(json.dumps(results, indent=4))
+    return results
+
+
+def save_responses(responses, output_dir, vlm_name):
+    response_json = os.path.join(output_dir, f"{vlm_name.replace('/', '_')}_dash_b_responses.json")
+    with open(response_json, 'w') as f:
+        f.write(json.dumps(responses, indent=4))
