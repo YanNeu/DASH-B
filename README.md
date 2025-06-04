@@ -7,7 +7,7 @@ from the [paper](https://arxiv.org/abs/2503.23573)
 **DASH: Detection and Assessment of Systematic Hallucinations of VLMs**
 
 **[Leaderboard](benchmark.md)**
-| **[Download](#download)** | **[Model Evaluation](#eval)** | **[Citation](#citation)** 
+| **[Download](#download)** | **[Model Evaluation](#eval)** | **[Hugging Face](https://huggingface.co/datasets/YanNeu/DASH-B)** | **[Citation](#citation)** 
 
 ## Dataset
 The benchmark consists of 2682 images for a range of 70 different objects. The used query is **"Can you see a *object* in this image. Please answer only with yes or no."** 1341 of the images do **not** contain the corresponding object but trigger object hallucinations. They were retrieved using the [DASH pipeline](https://github.com/YanNeu/DASH). The remaining 1341 images contain the objects.
