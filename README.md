@@ -107,9 +107,9 @@ Available VLMs:
 <a id="citation"></a>
 ## Citation
 
-    @article{augustin2025dash,
+    @inproceedings{augustin2025dash,
         title={DASH: Detection and Assessment of Systematic Hallucinations of VLMs},
         author={Augustin, Maximilian and Neuhaus, Yannic and Hein, Matthias},
-        journal={arXiv preprint arXiv:2503.23573},
+        booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
         year={2025}
     }
